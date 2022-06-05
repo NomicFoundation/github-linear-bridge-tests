@@ -27,14 +27,14 @@ jobs:
         run: yarn --frozen-lockfile
       - name: lint
         run: yarn lint
-      - uses: actions/github-script@v6
-        name: Comment on failure
-        if: ${{ failure() }}
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: "Thanks for submitting this PR!\nUnfortunately, it has some linter errors, so we can't merge it yet. Can you please fix them?\nRunning yarn `lint:fix` in the root of the repository may fix them automatically."
-            })
+      # - uses: actions/github-script@v6
+      #   name: Comment on failure
+      #   if: ${{ failure() }}
+      #   with:
+      #     script: |
+      #       github.rest.issues.createComment({
+      #         issue_number: context.issue.number,
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         body: "Thanks for submitting this PR!\nUnfortunately, it has some linter errors, so we can't merge it yet. Can you please fix them?\nRunning yarn `lint:fix` in the root of the repository may fix them automatically."
+      #       })
